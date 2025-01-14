@@ -1,27 +1,15 @@
 import {createI18n} from "vue-i18n";
 
+import en from './lang/en';
+import ka from './lang/ka';
+
 const i18nConfig = createI18n({
-    locale: import.meta.env.VITE_APP_LOCALE,
-    fallbackLocale: import.meta.env.VITE_APP_FALLBACK_LOCALE,
+    locale: 'ka',
+    fallbackLocale: 'ka',
     availableLocales:['ka', 'en'],
     messages: {
-        en: {
-            message: {
-                hello: 'hello world'
-            },
-            auth: {
-                login: 'login'
-            },
-        },
-        ka: {
-            message: {
-                hello: 'გამარჯობა სამყაროვ'
-            },
-            auth: {
-                login: 'შესვლა'
-            },
-        }
-
+        en,
+        ka
     }
 })
 

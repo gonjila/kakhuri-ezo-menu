@@ -64,7 +64,7 @@ const isOpen = ref(false);
 const selector = ref(null);
 
 const flags = {
-    en: 'us', // or 'gb'
+    en: 'us',
     ka: 'ge',
 };
 
