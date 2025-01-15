@@ -1,0 +1,5 @@
+export {default as Facebook} from './Facebook.vue'
+export {default as Location} from './Location.vue'
+export {default as Logo} from './Logo.vue'
+export {default as Mail} from './Mail.vue'
+export {default as Phone} from './Phone.vue'
