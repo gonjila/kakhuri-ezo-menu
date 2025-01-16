@@ -9,15 +9,15 @@
 
     const mouseEntered = ref(false)
 
-    const mouseHandler = (value: boolean) => {
+    const mouseOverHandler = (value: boolean) => {
         mouseEntered.value = value
     }
 </script>
 
 <template>
     <li
-        @mouseover="mouseHandler(true)" @mouseleave="mouseHandler(false)"
-        class="w-[300px] h-[300px] rounded-[50px] border border-gray-500 relative overflow-hidden boxShadow"
+        @mouseenter="mouseOverHandler(true)" @mouseleave="mouseOverHandler(false)"
+        class="boxBg boxShadow w-[300px] h-[300px] !rounded-[50px] relative overflow-hidden"
     >
         <a :href="data.slug">
             <img

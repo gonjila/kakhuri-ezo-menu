@@ -53,20 +53,20 @@ defineProps<{canLogin?: boolean}>();
                 </div>
             </header>
 
-            <main class="flex-1 flex flex-col gap-10">
+            <main class="flex-1 flex flex-col gap-20">
                 <slot />
             </main>
 
             <footer
-                class="blackText pt-10 pb-3 text-sm flex flex-col gap-4"
+                class="blackText text-sm pb-3 mt-16 flex flex-col gap-4"
             >
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-6">
-                        <a href="https://maps.app.goo.gl/41pSe9nroqQFsghf9" target="_blank" class="flex items-center gap-2">
+                        <a href="https://maps.app.goo.gl/QrjQvAjbgafKDCRU8" target="_blank" class="flex items-center gap-2">
                             <Location/> <span>78a Vazha-Pshavela Ave, T'bilisi, Georgia</span>
                         </a>
-                        <a href="tel:555555555" class="flex items-center gap-2"><Phone/> <span>555 555 555</span></a>
-                        <a href="mailto:example@google.com" class="flex items-center gap-2"><Mail/> <span>example@mail.com</span></a>
+                        <a href="tel:+995511430101" class="flex items-center gap-2"><Phone/> <span>555 555 555</span></a>
+                        <a href="mailto:restaurantkakhuriezo@gmail.com" class="flex items-center gap-2"><Mail/> <span>example@mail.com</span></a>
                     </div>
 
                     <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center"><facebook/></a>

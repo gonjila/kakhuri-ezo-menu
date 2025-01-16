@@ -15,15 +15,13 @@ import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryI
             <slot name="icon"/> <span class="">{{title}}</span>
         </h2>
 
-        <div class="flex">
-            <ul v-if="type==='category'" class="w-full flex items-center justify-center gap-10">
-                <CategoryItem v-for="item in data" :data="item" />
-            </ul>
+        <ul v-if="type==='category'" class="w-full flex items-center justify-center gap-10">
+            <CategoryItem v-for="item in (data as CategoryDataType[])" :data="item" />
+        </ul>
 
-            <ul v-if="type==='product'" class="w-full flex items-center gap-10">
-                <ProductItem v-for="item in data" :data="item" />
-            </ul>
-        </div>
+        <ul v-if="type==='product'" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-10">
+            <ProductItem v-for="item in (data as ProductDataType[])" :data="item" />
+        </ul>
     </div>
 </template>
 
