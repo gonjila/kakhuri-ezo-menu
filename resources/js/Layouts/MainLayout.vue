@@ -61,12 +61,12 @@ defineProps<{canLogin?: boolean}>();
                 class="blackText text-sm pb-3 mt-16 flex flex-col gap-4"
             >
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-6">
+                    <div class="flex flex-col md:flex-row md:items-center gap-3 lg:gap-6">
                         <a href="https://maps.app.goo.gl/QrjQvAjbgafKDCRU8" target="_blank" class="flex items-center gap-2">
-                            <Location/> <span>78a Vazha-Pshavela Ave, T'bilisi, Georgia</span>
+                            <Location/> <span>88 აწყურის ქუჩა, თბილისი</span>
                         </a>
-                        <a href="tel:+995511430101" class="flex items-center gap-2"><Phone/> <span>555 555 555</span></a>
-                        <a href="mailto:restaurantkakhuriezo@gmail.com" class="flex items-center gap-2"><Mail/> <span>example@mail.com</span></a>
+                        <a href="tel:+995511430101" class="flex items-center gap-2"><Phone/> <span>511 430 101</span></a>
+                        <a href="mailto:restaurantkakhuriezo@gmail.com" class="flex items-center gap-2"><Mail/> <span>restaurantkakhuriezo@gmail.com</span></a>
                     </div>
 
                     <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center"><facebook/></a>

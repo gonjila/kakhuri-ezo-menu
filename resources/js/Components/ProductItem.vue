@@ -12,7 +12,7 @@ export type DataType = {
     discounted_price: number;
 }
 
-defineProps<{
+const {data} = defineProps<{
     data: DataType
 }>()
 
@@ -22,14 +22,22 @@ const mouseOverHandler = (value: boolean) => {
     mouseEntered.value = value
 }
 
-const computedPrice = computed(()=>{})
+const computedDiscountPrice = computed(()=> {
+    if(!data.discount && !data.discounted_price){
+        return null
+    }else if (data.discount && !data.discounted_price){
+        return data.price * data.discount / 100
+    }
+
+    return data.discounted_price
+})
 </script>
 
 <template>
     <li class="relative boxBg boxShadow flex flex-col !overflow-visible">
         <div
             @mouseenter="mouseOverHandler(true)" @mouseleave="mouseOverHandler(false)"
-            class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-center justify-center flex-1"
+            class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
         >
             <img
                 :src="data.image"
@@ -42,10 +50,10 @@ const computedPrice = computed(()=>{})
             <h2 class="blackText text-center text-lg font-bold uppercase">{{data.name}}</h2>
             <p class="line-clamp-3">{{data.description}}</p>
 
-            <div class="py-2 px-10 bg-gray-300 dark:bg-gray-500 rounded-lg flex items-center gap-4 absolute -bottom-7 left-1/2 -translate-x-1/2">
-                <div class="flex flex-col items-center">
-                    <span class="text-sm line-through grayText">{{data.price}}</span>
-                    <span class="text-primary font-bold">{{data.discounted_price}}</span>
+            <div class="py-1 lg:py-2 px-5 lg:px-10 bg-gray-300 dark:bg-gray-500 rounded-lg flex items-center gap-3 absolute -bottom-5 left-1/2 -translate-x-1/2">
+                <div class="flex gap-2 items-center">
+                    <span :class="computedDiscountPrice ? 'text-sm line-through grayText':'text-primary font-bold'">{{data.price}}</span>
+                    <span v-if="computedDiscountPrice" class="text-primary font-bold">{{computedDiscountPrice}}</span>
                 </div>
 
                 <span class="blackText">GEL</span>

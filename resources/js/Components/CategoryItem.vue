@@ -17,7 +17,7 @@
 <template>
     <li
         @mouseenter="mouseOverHandler(true)" @mouseleave="mouseOverHandler(false)"
-        class="boxBg boxShadow w-[300px] h-[300px] !rounded-[50px] relative overflow-hidden"
+        class="boxBg boxShadow w-full md:w-[300px] aspect-video md:aspect-square !rounded-[50px] relative overflow-hidden"
     >
         <a :href="data.slug">
             <img

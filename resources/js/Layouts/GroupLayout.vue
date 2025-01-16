@@ -11,11 +11,11 @@ import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryI
 
 <template>
     <div class="flex flex-col gap-7">
-        <h2 class="blackText text-3xl font-bold uppercase flex items-center gap-3">
+        <h2 class="blackText text-xl sm:text-2xl lg:text-3xl font-bold uppercase flex items-center gap-3">
             <slot name="icon"/> <span class="">{{title}}</span>
         </h2>
 
-        <ul v-if="type==='category'" class="w-full flex items-center justify-center gap-10">
+        <ul v-if="type==='category'" class="w-full flex flex-wrap items-center justify-center gap-10">
             <CategoryItem v-for="item in (data as CategoryDataType[])" :data="item" />
         </ul>
 
