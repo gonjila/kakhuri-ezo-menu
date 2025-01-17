@@ -20,10 +20,3 @@ import { useTheme } from '@/composables/useTheme'
 
 const { isDark, toggleTheme } = useTheme()
 </script>
-
-<style scoped>
-/* Optional: Add transition for smooth theme change */
-button {
-    transition: background-color 0.3s, color 0.3s
-}
-</style>

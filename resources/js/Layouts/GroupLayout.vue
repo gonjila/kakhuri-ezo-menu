@@ -10,7 +10,7 @@ import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryI
 </script>
 
 <template>
-    <div class="flex flex-col gap-7">
+    <section class="flex flex-col gap-7">
         <h2 class="blackText text-xl sm:text-2xl lg:text-3xl font-bold uppercase flex items-center gap-3">
             <slot name="icon"/> <span class="">{{title}}</span>
         </h2>
@@ -22,6 +22,6 @@ import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryI
         <ul v-if="type==='product'" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-10">
             <ProductItem v-for="item in (data as ProductDataType[])" :data="item" />
         </ul>
-    </div>
+    </section>
 </template>
 

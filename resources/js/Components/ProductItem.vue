@@ -16,10 +16,10 @@ const {data} = defineProps<{
     data: DataType
 }>()
 
-const mouseEntered = ref(false)
+const isMouseEntered = ref(false)
 
 const mouseOverHandler = (value: boolean) => {
-    mouseEntered.value = value
+    isMouseEntered.value = value
 }
 
 const computedDiscountPrice = computed(()=> {
@@ -42,7 +42,7 @@ const computedDiscountPrice = computed(()=> {
             <img
                 :src="data.image"
                 :alt="data.name"
-                :class="` transition duration-500 ${mouseEntered && 'scale-110'}`"
+                :class="` transition duration-500 ${isMouseEntered && 'scale-110'}`"
             >
         </div>
 
