@@ -32,7 +32,7 @@ class ProductFactory extends Factory
             "image" => $this->faker->imageUrl(),
             "price" => $price,
             "discount" => $discount,
-            "discounted_price" => $price - ($price * ($discount / 100)),
+            "discounted_price" => round($price - ($price * ($discount / 100)), 2),
             "is_popular" => $this->faker->boolean(),
             "is_in_stock" => $this->faker->boolean(),
         ];

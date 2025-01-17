@@ -1,7 +1,7 @@
 import {createI18n} from "vue-i18n";
 
-import en from './lang/en';
-import ka from './lang/ka';
+import en from '@/Lang/en';
+import ka from '@/Lang/ka';
 
 const i18nConfig = createI18n({
     locale: 'ka',

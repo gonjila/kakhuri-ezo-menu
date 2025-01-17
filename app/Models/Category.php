@@ -13,6 +13,7 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory, HasTranslations;
 
+    protected $guarded = ["id"];
     public array $translatable = ['title'];
 
     function products(): BelongsToMany {

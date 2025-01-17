@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('Welcome', [
+        'categories' => \App\Models\Category::all(),
+        'popular' => \App\Models\Product::where('is_popular', true)->take(12)->get(),
+    ]);
 });
 
 Route::prefix('products')->controller(ProductController::class)->group(function () {
