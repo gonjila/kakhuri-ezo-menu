@@ -3,8 +3,6 @@ import {Link} from '@inertiajs/vue3';
 import LanguageSelector from "@/Components/LanguageSelector.vue";
 import ThemeToggleButton from "@/Components/ThemeToggleButton.vue";
 import {Location, Mail, Phone, Facebook, Logo} from "@/Components/icons";
-
-defineProps<{canLogin?: boolean}>();
 </script>
 
 <template>
@@ -22,7 +20,7 @@ defineProps<{canLogin?: boolean}>();
                     </div>
                 </Link>
 
-                <div v-if="canLogin" class="col-start-2 lg:col-start-3 flex flex-1 justify-end gap-3">
+                <div class="col-start-2 lg:col-start-3 flex flex-1 justify-end gap-3">
 <!--                    <Link-->
 <!--                        v-if="$page.props.auth.user"-->
 <!--                        :href="route('dashboard')"-->
