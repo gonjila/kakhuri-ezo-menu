@@ -2,7 +2,7 @@
     import {Link} from '@inertiajs/vue3'
     import {ref} from "vue";
 
-    export type DataType = {id: string, name: string, slug: string}
+    export type DataType = {id: string, name: string}
 
     defineProps<{
         data: DataType

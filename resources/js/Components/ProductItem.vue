@@ -5,7 +5,6 @@ import {computed, ref} from "vue";
 export type DataType = {
     id: string;
     name: string;
-    slug: string;
     image:string;
     description: string;
     price: number;
@@ -35,8 +34,8 @@ const computedDiscountPrice = computed(()=> {
 </script>
 
 <template>
-    <li class="relative boxBg boxShadow flex flex-col !overflow-visible cursor-pointer">
-        <Link :href="route('product', {productName: data.name})">
+    <li class="relative boxBg boxShadow !overflow-visible cursor-pointer">
+        <Link :href="route('product', {productName: data.name})" class="h-full flex flex-col">
             <div
                 @mouseenter="mouseOverHandler(true)" @mouseleave="mouseOverHandler(false)"
                 class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"

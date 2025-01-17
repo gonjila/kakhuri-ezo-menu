@@ -2,21 +2,20 @@
 
 namespace App\Models;
 
-use Database\Factories\ProductFactory;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
 
-class Product extends Model
+class Category extends Model
 {
-    /** @use HasFactory<ProductFactory> */
+    /** @use HasFactory<CategoryFactory> */
     use HasFactory, HasTranslations;
 
-    public array $translatable = ['name', 'description'];
+    public array $translatable = ['title'];
 
-    function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(Category::class);
+    function products(): BelongsToMany {
+        return $this->belongsToMany(Product::class);
     }
 }
