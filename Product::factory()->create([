@@ -1,0 +1,14 @@
+[90m= [39m[34;4mApp\Models\Product[39;24m {#5314
+    [34mname[39m: "[32m{"ka":"Factory Product"}[39m",
+    [34mdescription[39m: "[32m{"en":"Et qui ut et ipsam consequatur.","ka":"Accusantium et dolor sit aut aut dolore."}[39m",
+    [34mimage[39m: "[32mhttps://via.placeholder.com/640x480.png/003344?text=itaque[39m",
+    [34mprice[39m: [35m150[39m,
+    [34mdiscount[39m: [35m10[39m,
+    [34mdiscounted_price[39m: [33m42.64[39m,
+    [34mis_popular[39m: [36mfalse[39m,
+    [34mis_in_stock[39m: [36mtrue[39m,
+    [34mupdated_at[39m: "[32m2025-01-18 02:04:19[39m",
+    [34mcreated_at[39m: "[32m2025-01-18 02:04:19[39m",
+    [34mid[39m: [35m34[39m,
+  }
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Inertia\Inertia;
 
@@ -11,8 +12,10 @@ class ProductController extends Controller
         return Inertia::render('AllDishes', ["products" => Product::all()]);
     }
 
-    function get($productName){
-        return Inertia::render('SingleProduct', ['productName' => $productName]);
+    function get($productId){
+        return Inertia::render('SingleProduct', [
+            'product' => new ProductResource(Product::findOrFail($productId))
+        ]);
     }
 
 }

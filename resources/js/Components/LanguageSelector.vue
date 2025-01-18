@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import {router} from "@inertiajs/vue3";
 
 const { locale, availableLocales } = useI18n();
 
@@ -33,6 +34,8 @@ const toggleDropdown = () => {
 const selectLocale = (selectedLocale) => {
     locale.value = selectedLocale;
     isOpen.value = false;
+
+    router.post(`/set-language`, {lang: selectedLocale})
 };
 
 const handleClickOutside = (event) => {

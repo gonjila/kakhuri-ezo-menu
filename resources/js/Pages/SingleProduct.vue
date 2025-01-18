@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import {Head} from "@inertiajs/vue3";
 
-    defineProps<{productName: string}>();
+    defineProps<{product: object}>();
 </script>
 
 <template>
     <Head title="SingleProduct" />
 
-    {{productName}}
+    {{product}}
 </template>

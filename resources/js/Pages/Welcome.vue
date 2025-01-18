@@ -8,7 +8,7 @@ import {DataType as ProductDataType} from "@/Components/ProductItem.vue";
 
 defineProps<{
     categories: CategoryDataType[];
-    popular: ProductDataType[]
+    popular: {data: ProductDataType[]};
 }>()
 </script>
 
@@ -22,7 +22,7 @@ defineProps<{
             </template>
         </GroupLayout>
 
-        <GroupLayout :title="$t('titles.popular')" :icon="Mail" type="product" :data="popular">
+        <GroupLayout :title="$t('titles.popular')" :icon="Mail" type="product" :data="popular.data">
             <template #icon>
                 <Mail width="44" height="44" />
             </template>
