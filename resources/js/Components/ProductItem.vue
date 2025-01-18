@@ -2,6 +2,7 @@
     import {Link} from '@inertiajs/vue3';
     import {ref} from "vue";
     import {IProduct} from "@/types";
+    import DiscountBadge from "@/Components/DiscountBadge.vue";
 
     const {data} = defineProps<{
         data: IProduct
@@ -42,12 +43,7 @@
                 </div>
             </div>
 
-            <div
-                v-if="data.discount"
-                class="text-white font-bold h-7 bg-primary px-5 rounded-r-lg absolute top-[30px] left-0 before:block before:w-2 before:h-[110%] before:bg-primary before:absolute before:right-full before:rounded-l-lg"
-            >
-                -{{data.discount}}%
-            </div>
+            <DiscountBadge :discount="data.discount" />
         </Link>
     </li>
 </template>

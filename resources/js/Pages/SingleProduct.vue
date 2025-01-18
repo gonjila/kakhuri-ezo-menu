@@ -3,6 +3,7 @@
     import {MainLayout} from "@/Layouts";
     import {ICategory, IProduct} from "@/types";
     import {Link} from '@inertiajs/vue3'
+    import DiscountBadge from "@/Components/DiscountBadge.vue";
 
     defineProps<{
         product: { data: IProduct }
@@ -15,13 +16,15 @@
 
     <MainLayout>
         <div class="flex gap-10">
-            <div class="flex-[3]">
+            <div class="relative flex-[3]">
 <!--                    :src="product.data.image"-->
                 <img
                     src="https://bonee.blob.core.windows.net/images/a30bc6cf-905b-a34b-b70a-6aaee0b97dc6_3.webp"
                     :alt="product.data.name"
                     class="rounded-lg"
                 >
+
+                <DiscountBadge :discount="product.data.discount" />
             </div>
 
             <div class="flex-[4] flex flex-col gap-10">
