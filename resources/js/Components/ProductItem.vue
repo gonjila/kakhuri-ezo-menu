@@ -1,19 +1,10 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3';
-    import {computed, ref} from "vue";
-
-    export type DataType = {
-        id: string;
-        name: string;
-        image:string;
-        description: string;
-        price: number;
-        discount: number;
-        discounted_price: number;
-    }
+    import {ref} from "vue";
+    import {IProduct} from "@/types";
 
     const {data} = defineProps<{
-        data: DataType
+        data: IProduct
     }>()
 
     const isMouseEntered = ref(false)

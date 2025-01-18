@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryItem.vue";
- import ProductItem, {DataType as ProductDataType} from "@/Components/ProductItem.vue";
+import CategoryItem from "@/Components/CategoryItem.vue";
+ import ProductItem from "@/Components/ProductItem.vue";
+import {ICategory, IProduct} from "@/types";
 
  defineProps<{
      title: string
      type: "category" | "product"
-     data: (CategoryDataType | ProductDataType)[]
+     data: (ICategory | IProduct)[]
  }>()
 </script>
 
@@ -16,11 +17,11 @@ import CategoryItem, {DataType as CategoryDataType} from "@/Components/CategoryI
         </h2>
 
         <ul v-if="type==='category'" class="w-full flex flex-wrap items-center justify-center gap-10">
-            <CategoryItem v-for="item in (data as CategoryDataType[])" :data="item" />
+            <CategoryItem v-for="item in (data as ICategory[])" :data="item" />
         </ul>
 
         <ul v-if="type==='product'" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-10">
-            <ProductItem v-for="item in (data as ProductDataType[])" :data="item" />
+            <ProductItem v-for="item in (data as IProduct[])" :data="item" />
         </ul>
     </section>
 </template>

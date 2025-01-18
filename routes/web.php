@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
@@ -22,7 +23,7 @@ Route::post('/set-language', function (\Illuminate\Http\Request $request) {
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'categories' => Category::all(),
+        'categories' => CategoryResource::collection(Category::all()),
         'popular' => ProductResource::collection(Product::where('is_popular', true)->take(12)->get()),
     ]);
 })->name('home');

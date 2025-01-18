@@ -3,12 +3,11 @@ import {Head} from '@inertiajs/vue3';
 import {MainLayout, GroupLayout} from "@/Layouts";
 import {Mail} from "@/Components/icons";
 
-import {DataType as CategoryDataType} from '@/Components/CategoryItem.vue'
-import {DataType as ProductDataType} from "@/Components/ProductItem.vue";
+import {ICategory, IProduct} from "@/types";
 
 defineProps<{
-    categories: CategoryDataType[];
-    popular: {data: ProductDataType[]};
+    categories: {data: ICategory[]};
+    popular: {data: IProduct[]};
 }>()
 </script>
 
@@ -16,7 +15,7 @@ defineProps<{
     <Head title="Welcome" />
 
     <MainLayout>
-        <GroupLayout :title="$t('titles.categories')" type="category" :data="categories">
+        <GroupLayout :title="$t('titles.categories')" type="category" :data="categories.data">
             <template #icon>
                 <Mail width="44" height="44" />
             </template>

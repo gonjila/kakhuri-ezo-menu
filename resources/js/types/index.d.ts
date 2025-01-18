@@ -1,3 +1,6 @@
+export * from './product'
+export * from './category'
+
 export interface User {
     id: number;
     name: string;
@@ -12,3 +15,4 @@ export type PageProps<
         user: User;
     };
 };
+
