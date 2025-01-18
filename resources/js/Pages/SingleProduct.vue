@@ -15,7 +15,7 @@
     <Head title="SingleProduct" />
 
     <MainLayout>
-        <div class="flex gap-10">
+        <div class="flex flex-col lg:flex-row gap-10">
             <div class="relative flex-[3]">
 <!--                    :src="product.data.image"-->
                 <img
