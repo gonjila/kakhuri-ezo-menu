@@ -4,10 +4,12 @@
     import {ICategory, IProduct} from "@/types";
     import {Link} from '@inertiajs/vue3'
     import DiscountBadge from "@/Components/DiscountBadge.vue";
+    import ProductItem from "@/Components/ProductItem.vue";
 
     defineProps<{
         product: { data: IProduct }
         categories: { data: ICategory[] }
+        similarProducts: { data: IProduct[] }
     }>();
 </script>
 
@@ -62,10 +64,12 @@
             </div>
         </div>
 
-        <div class="">
-            <h3 class="">similar</h3>
+        <div v-if="similarProducts.data.length > 0" class="flex flex-col gap-4">
+            <h3 class="capitalize text-lg blackText">{{ $t('titles.similarProducts') }}</h3>
 
-            <div class=""></div>
+            <ul class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-10">
+                <ProductItem v-for="item in similarProducts.data" :data="item" />
+            </ul>
         </div>
     </MainLayout>
 </template>
