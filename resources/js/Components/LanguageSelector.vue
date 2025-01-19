@@ -54,6 +54,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+<!--    TODO get value from localhost and appear on render-->
+
     <div ref="selector" class="relative inline-block text-left language-selector ">
         <!-- Current Language Button -->
         <button

@@ -13,7 +13,7 @@
 
 
     <MainLayout>
-        <SearchInput/>
+        <SearchInput :is-shown-all-products-btn="false"/>
 
         <ul class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-10">
             <ProductItem v-for="item in products.data" :data="item" />
