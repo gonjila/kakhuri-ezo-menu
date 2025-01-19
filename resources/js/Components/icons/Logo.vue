@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{
-    width?: string,
-    height?: string,
-    fill?: string,
-}>()
+    defineProps<{
+        width?: string,
+        height?: string,
+        fill?: string,
+    }>()
 </script>
 
 <template>

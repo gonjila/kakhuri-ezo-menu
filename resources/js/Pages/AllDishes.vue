@@ -1,10 +1,16 @@
 <script setup lang="ts">
     import {Head} from "@inertiajs/vue3";
+    import {IProduct} from "@/types";
+    import {MainLayout} from "@/Layouts";
 
-    defineProps<{categoryName: string}>();
+    defineProps<{products: {data: IProduct[] }}>();
 </script>
 
 <template>
     <Head title="All Dishes" />
-    all dishes {{categoryName}}
+
+
+    <MainLayout>
+        {{products.data}}
+    </MainLayout>
 </template>

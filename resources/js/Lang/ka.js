@@ -11,5 +11,9 @@ export default {
         similarProducts: 'მსგავსი პროდუქტები',
     },
     welcome: {part1:"მოგესალმებით", part2:"კახური ეზო"},
-    createdby: {part1: 'შექმნილია', part2: 'ს მიერ'}
+    createdby: {part1: 'შექმნილია', part2: 'ს მიერ'},
+    products: {
+        allProducts: "ყველა პროდუქტი",
+        search: 'მოძებნე პროდქტები',
+    }
 }

@@ -11,5 +11,9 @@ export default {
         similarProducts: 'similar products',
     },
     welcome:{part1:"welcome to", part2:"Kakhuri ezo"},
-    createdby: {part1: "made by", part2: ""}
+    createdby: {part1: "made by", part2: ""},
+    products: {
+        allProducts: "all products",
+        search: "search products",
+    }
 }

@@ -41,7 +41,7 @@
                     <div class="flex flex-wrap gap-3">
                         <Link
                             v-for="category in categories.data"
-                            :href="route('all-products')"
+                            :href="route('all-products', {category_id: category.id})"
                             class="boxBg boxShadow px-4 py-2"
                         >
                             {{ category.title }}

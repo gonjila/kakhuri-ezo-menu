@@ -4,6 +4,7 @@ import {MainLayout, GroupLayout} from "@/Layouts";
 import {Mail} from "@/Components/icons";
 
 import {ICategory, IProduct} from "@/types";
+import SearchInput from "@/Components/SearchInput.vue";
 
 defineProps<{
     categories: {data: ICategory[]};
@@ -15,6 +16,8 @@ defineProps<{
     <Head title="Welcome" />
 
     <MainLayout>
+        <SearchInput />
+
         <GroupLayout :title="$t('titles.categories')" type="category" :data="categories.data">
             <template #icon>
                 <Mail width="44" height="44" />
