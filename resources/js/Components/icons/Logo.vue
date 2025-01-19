@@ -9,7 +9,7 @@
 <template>
     <svg
         :width="width ?? '64px'" :height="height ?? '64px'" viewBox="0 0 239.000000 312.000000"
-        :fill="fill ?? '#7d2b31'" stroke="none"
+        :fill="fill ?? '#ff2d20'" stroke="none"
         preserveAspectRatio="xMidYMid meet"
         xmlns="http://www.w3.org/2000/svg"
     >

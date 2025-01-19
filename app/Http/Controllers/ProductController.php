@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
-use function PHPUnit\Framework\isArray;
 
 class ProductController extends Controller
 {
@@ -28,7 +26,7 @@ class ProductController extends Controller
 
         $products = $products->get();
 
-        return Inertia::render('AllDishes', ["products" => ProductResource::collection($products)]);
+        return Inertia::render('AllProduct', ["products" => ProductResource::collection($products)]);
     }
 
     function get($productId){
