@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
@@ -8,6 +8,7 @@ const { locale, availableLocales } = useI18n();
 
 const isOpen = ref(false);
 const selector = ref(null);
+const LANGUAGE_NAME = "lang";
 
 const flags = {
     en: 'us',
@@ -31,9 +32,11 @@ const toggleDropdown = () => {
     isOpen.value = !isOpen.value;
 };
 
-const selectLocale = (selectedLocale) => {
+const selectLocale = (selectedLocale: string) => {
     locale.value = selectedLocale;
     isOpen.value = false;
+
+    localStorage.setItem(LANGUAGE_NAME, selectedLocale)
 
     router.post(`/set-language`, {lang: selectedLocale})
 };
@@ -45,6 +48,11 @@ const handleClickOutside = (event) => {
 };
 
 onMounted(() => {
+    const savedLang = localStorage.getItem(LANGUAGE_NAME);
+    if (savedLang) {
+        locale.value = savedLang;
+    }
+
     document.addEventListener('click', handleClickOutside);
 });
 
@@ -54,8 +62,6 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<!--    TODO get value from localhost and appear on render-->
-
     <div ref="selector" class="relative inline-block text-left language-selector ">
         <!-- Current Language Button -->
         <button
