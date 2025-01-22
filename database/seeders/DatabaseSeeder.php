@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         Category::factory()->count(8)->create();
         Product::factory()->count(20)->create();
+
+        User::factory()->create(["email" => "admin@admin.com", "name" => "Admin", "password" => "password"]);
 
         $this->call([CategoryProductSeeder::class]);
     }
