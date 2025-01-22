@@ -47,7 +47,8 @@ class ProductResource extends Resource
                     ->maxSize(20 * 1024)
                     ->acceptedFileTypes(['image/png', 'image/jpeg'])
                     ->helperText('Each image should be less than 20MB and in .jpg, .png formats.')
-                    ->reorderable(),
+                    ->reorderable()
+                    ->required(),
 
                 Group::make([
                     Group::make([
@@ -98,11 +99,9 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                ImageColumn::make('images')
-//                    ->label('სურათები')
+                ImageColumn::make('image')
                     ->disk('public') // Ensure this matches your filesystem configuration
                     ->height(100)
                     ->toggleable(isToggledHiddenByDefault: true),
