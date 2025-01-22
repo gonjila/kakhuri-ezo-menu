@@ -37,7 +37,7 @@ class Product extends Model
 
             if (!$product->discount) {
                 if ($product->discounted_price && $product->price) {
-                    $product->discount = round(($product->price - $product->discounted_price ) * 100 / $product->price , 2);
+                    $product->discount = round(($product->price - $product->discounted_price ) * 100 / $product->price);
                 } else {
                     $product->discount = null;
                 }

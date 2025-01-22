@@ -17,8 +17,8 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $price = $this->faker->randomFloat(2, 10, 100);
-        $discount = $this->faker->randomFloat(2, 5, 20);
+        $price = $this->faker->randomFloat(1, 10, 100);
+        $discount = $this->faker->randomFloat(0, 5, 20);
 
         return [
             "name" => [
@@ -32,7 +32,7 @@ class ProductFactory extends Factory
             "image" => $this->faker->imageUrl(),
             "price" => $price,
             "discount" => $discount,
-            "discounted_price" => round($price - ($price * ($discount / 100)), 2),
+            "discounted_price" => round($price - ($price * ($discount / 100)), 1),
             "is_popular" => $this->faker->boolean(),
             "is_in_stock" => $this->faker->boolean(),
         ];

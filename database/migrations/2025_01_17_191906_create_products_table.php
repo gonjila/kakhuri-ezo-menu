@@ -17,7 +17,7 @@ return new class extends Migration
             $table->json('description');
             $table->text('image');
             $table->float('price');
-            $table->float('discount')->nullable();
+            $table->integer('discount')->nullable();
             $table->float('discounted_price')->nullable();
             $table->boolean("is_popular")->default(false);
             $table->boolean("is_in_stock")->default(true);
