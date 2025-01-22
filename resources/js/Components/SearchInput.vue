@@ -3,7 +3,11 @@
     import {Search} from "@/Components/icons";
     import {Link, router} from "@inertiajs/vue3";
 
-    defineProps({
+    const props = defineProps({
+        defaultValue: {
+            type: String,
+            required: false
+        },
         isShownAllProductsBtn: {
             type: Boolean,
             required: false,
@@ -13,7 +17,7 @@
 
     const componentsHeight = '40px'
     const form = reactive({
-        search: null,
+        search: props.defaultValue || route().params?.search || null,
     })
 
     function submit() {
@@ -28,8 +32,8 @@
         <form @submit.prevent="submit" class="w-full flex items-center gap-4 flex-1">
             <input
                 type="search"
-                :placeholder="$t('products.search')"
                 v-model="form.search"
+                :placeholder="$t('products.search')"
                 class="placeholder:capitalize px-4 bg-transparent border border-gray-400 focus:border-gray-400 rounded-lg focus:ring-0 flex-1"
                 :style="{height: componentsHeight}"
             >
