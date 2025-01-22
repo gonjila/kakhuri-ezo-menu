@@ -6,6 +6,7 @@ use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Product extends Model
@@ -40,6 +41,22 @@ class Product extends Model
                     $product->discount = round(($product->price - $product->discounted_price ) * 100 / $product->price);
                 } else {
                     $product->discount = null;
+                }
+            }
+        });
+
+        static::deleting(function ($product) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+        });
+
+        static::updating(function ($product) {
+            // Check if the image is being updated
+            if ($product->isDirty('image')) {
+                $oldImage = $product->getOriginal('image');
+                if ($oldImage) {
+                    Storage::disk('public')->delete($oldImage);
                 }
             }
         });

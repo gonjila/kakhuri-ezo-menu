@@ -1,18 +1,12 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3';
-    import {computed, ref} from "vue";
+    import {computed} from "vue";
     import {IProduct} from "@/types";
     import DiscountBadge from "@/Components/DiscountBadge.vue";
 
     const {data} = defineProps<{
         data: IProduct
     }>()
-
-    const isMouseEntered = ref(false)
-
-    const mouseOverHandler = (value: boolean) => {
-        isMouseEntered.value = value
-    }
 
     const imageUrl = computed(() => {
         if(data.image.startsWith("http")){
@@ -27,13 +21,12 @@
     <li class="relative boxBg boxShadow !overflow-visible cursor-pointer">
         <Link :href="route('product', {productId: data.id})" class="h-full flex flex-col">
             <div
-                @mouseenter="mouseOverHandler(true)" @mouseleave="mouseOverHandler(false)"
                 class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
             >
                 <img
                     :src="imageUrl"
                     :alt="data.name"
-                    :class="`transition duration-500 ${isMouseEntered && 'scale-110'}`"
+                    class="w-full h-full object-contain duration-500 hover:scale-110"
                 >
             </div>
 
