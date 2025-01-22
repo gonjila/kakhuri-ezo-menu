@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3';
-    import {ref} from "vue";
+    import {computed, ref} from "vue";
     import {IProduct} from "@/types";
     import DiscountBadge from "@/Components/DiscountBadge.vue";
 
@@ -13,6 +13,14 @@
     const mouseOverHandler = (value: boolean) => {
         isMouseEntered.value = value
     }
+
+    const imageUrl = computed(() => {
+        if(data.image.startsWith("http")){
+            return data.image;
+        }
+
+        return import.meta.env.BASE_URL + "storage/" + data.image;
+    })
 </script>
 
 <template>
@@ -23,9 +31,9 @@
                 class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
             >
                 <img
-                    :src="data.image"
+                    :src="imageUrl"
                     :alt="data.name"
-                    :class="` transition duration-500 ${isMouseEntered && 'scale-110'}`"
+                    :class="`transition duration-500 ${isMouseEntered && 'scale-110'}`"
                 >
             </div>
 
