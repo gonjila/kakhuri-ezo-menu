@@ -10,29 +10,29 @@ const isOpen = ref(false);
 const selector = ref(null);
 const LANGUAGE_NAME = "lang";
 
-const flags = {
+const flags: Record<string, string> = {
     en: 'us',
     ka: 'ge',
 };
 
-const languageNames = {
+const languageNames: Record<string, string> = {
     en: 'English',
     ka: 'ქართული',
 };
 
-const currentLanguage = computed(() => {
+const currentLanguage = computed<string>(() => {
     return languageNames[locale.value] || locale.value;
 });
 
-const currentFlag = computed(() => {
+const currentFlag = computed<string>(() => {
     return flags[locale.value] || 'us';
 });
 
-const toggleDropdown = () => {
+const toggleDropdown = (): void => {
     isOpen.value = !isOpen.value;
 };
 
-const selectLocale = (selectedLocale: string) => {
+const selectLocale = (selectedLocale: string): void => {
     locale.value = selectedLocale;
     isOpen.value = false;
 
@@ -41,7 +41,7 @@ const selectLocale = (selectedLocale: string) => {
     router.post(`/set-language`, {lang: selectedLocale})
 };
 
-const handleClickOutside = (event) => {
+const handleClickOutside = (event: MouseEvent): void => {
     if (selector.value && !selector.value.contains(event.target)) {
         isOpen.value = false;
     }
