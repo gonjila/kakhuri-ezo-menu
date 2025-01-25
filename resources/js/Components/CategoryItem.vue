@@ -1,18 +1,12 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3'
-    import {computed, ref} from "vue";
+    import {computed} from "vue";
     import {ICategory} from "@/types";
 
 
     const {data} = defineProps<{
         data: ICategory
     }>()
-
-    const mouseEntered = ref(false)
-
-    const mouseOverHandler = (value: boolean) => {
-        mouseEntered.value = value
-    }
 
     const imageUrl = computed(() => {
         if(data.image.startsWith("http")){
@@ -22,10 +16,9 @@
         return import.meta.env.BASE_URL + "storage/" + data.image;
     })
 </script>
-<!--                src="https://bonee.blob.core.windows.net/images/1869aa84-ab63-c4c5-ef95-23d7d07e30d8_3.webp"-->
 
 <template>
-    <li class="boxBg boxShadow w-full md:w-[300px] aspect-video md:aspect-square !rounded-[50px] relative overflow-hidden">
+    <li class=" boxShadow w-full md:w-[300px] aspect-video md:aspect-square !rounded-[50px] relative overflow-hidden">
         <Link :href="route('all-products', {category_id: data.id})">
             <img
                 :src="imageUrl"

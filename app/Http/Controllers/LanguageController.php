@@ -9,13 +9,20 @@ use Illuminate\Support\Facades\Session;
 class LanguageController extends Controller
 {
     function index(Request $request) {
-        $lang = $request->input('lang');
+        try {
+            $lang = $request->input('lang');
 
-        if (in_array($lang, ['en', 'ka'])) { // Adjust available locales as needed
-            App::setLocale($lang);
-            Session::put('locale', $lang); // Store the locale in session
+            if (in_array($lang, ['en', 'ka'])) {
+                App::setLocale($lang);
+                Session::put('locale', $lang);
+            }
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Language change failed!',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        return redirect()->back();  // Set a cookie for 30 days
     }
 }

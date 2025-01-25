@@ -2,48 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
-    function index (Request $request) {
-        $products = Product::query();
+    protected ProductService $productService;
 
-        if($searchQuery = $request->query('search')) {
-            $products =  $products->where(DB::raw('LOWER(name)'), 'like', '%' . strtolower($searchQuery) . '%');
+    public function __construct(ProductService $productService){
+        $this->productService = $productService;
+    }
+
+    function index () {
+        try{
+            return $this->productService->getAllProducts();
+        } catch (\Exception $exception){
+            return response()->json([
+                'message' => 'Getting products data failed!',
+                'error' => $exception->getMessage()
+            ], 500);
         }
-
-        if ($categoryIdQuery = $request->query('category_id')) {
-            $products = $products->whereHas('categories', function ($query) use ($categoryIdQuery) {
-                $query->where('categories.id', $categoryIdQuery);
-            });
-        }
-
-        $products = $products->get();
-
-        return Inertia::render('AllProduct', ["products" => ProductResource::collection($products)]);
     }
 
     function get($productId){
-        $product = Product::with('categories')->findOrFail($productId);
-
-        $similarProducts = Product::whereHas('categories', function ($query) use ($product) {
-            $query->whereIn('categories.id', $product->categories->pluck('id'));
-        })
-            ->where('id', '!=', $product->id) // Exclude the current product
-            ->take(8) // Limit the number of similar products (optional)
-            ->get();
-
-        return Inertia::render('SingleProduct', [
-            'product' => new ProductResource($product),
-            'categories' => CategoryResource::collection($product->categories),
-            'similarProducts' => ProductResource::collection($similarProducts)
-        ]);
+        try{
+            return $this->productService->getProductById($productId);
+        } catch (\Exception $exception){
+            return response()->json([
+                'message' => 'Getting product data failed!',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
     }
 
 }
