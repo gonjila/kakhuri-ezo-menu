@@ -2,7 +2,7 @@
 import {Link} from '@inertiajs/vue3';
 import LanguageSelector from "@/Components/LanguageSelector.vue";
 import ThemeToggleButton from "@/Components/ThemeToggleButton.vue";
-import {Location, Mail, Phone, Facebook, Logo} from "@/Components/icons";
+import {Location, Mail, Phone, Facebook, Logo, Instagram, Tiktok} from "@/Components/icons";
 </script>
 
 <template>
@@ -58,16 +58,20 @@ import {Location, Mail, Phone, Facebook, Logo} from "@/Components/icons";
             <footer
                 class="blackText text-sm pb-3 mt-16 flex flex-col gap-4"
             >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between gap-5">
                     <div class="flex flex-col md:flex-row md:items-center gap-3 lg:gap-6">
-                        <a href="https://maps.app.goo.gl/QrjQvAjbgafKDCRU8" target="_blank" class="flex items-center gap-2">
+                        <a href="https://maps.app.goo.gl/QrjQvAjbgafKDCRU8" target="_blank" class="min-w-max flex items-center gap-2">
                             <Location/> <span>88 აწყურის ქუჩა, თბილისი</span>
                         </a>
-                        <a href="tel:+995511430101" class="flex items-center gap-2"><Phone/> <span>511 430 101</span></a>
-                        <a href="mailto:restaurantkakhuriezo@gmail.com" class="flex items-center gap-2"><Mail/> <span>restaurantkakhuriezo@gmail.com</span></a>
+                        <a href="tel:+995511430101" class="min-w-max flex items-center gap-2"><Phone/> <span>511 430 101</span></a>
+                        <a href="mailto:restaurantkakhuriezo@gmail.com" class="min-w-max flex items-center gap-2"><Mail/> <span>restaurantkakhuriezo@gmail.com</span></a>
                     </div>
 
-                    <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center"><facebook/></a>
+                    <div class="flex flex-col md:flex-row flex-wrap gap-2">
+                        <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center"><Facebook/></a>
+                        <a href="https://www.instagram.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white boxShadow rounded-full flex items-center justify-center"><Instagram/></a>
+                        <a href="https://www.tiktok.com/@restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white boxShadow rounded-full flex items-center justify-center"><Tiktok/></a>
+                    </div>
                 </div>
 
                 <hr class="border-gray-500">
