@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
+use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -33,6 +35,12 @@ class CategoryResource extends Resource
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+                Select::make('products')
+                    ->relationship('products', 'name')
+                    ->options(Product::all()->pluck('name', 'id'))
+                    ->multiple()
+                    ->required()
+                    ->searchable(),
                 FileUpload::make('image')
                     ->disk('public')
                     ->directory('uploads/products')
@@ -62,6 +70,10 @@ class CategoryResource extends Resource
                 ImageColumn::make('image')
                     ->disk('public') // Ensure this matches your filesystem configuration
                     ->height(100),
+                TextColumn::make('products.name')
+                    ->sortable()
+                    ->wrap()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

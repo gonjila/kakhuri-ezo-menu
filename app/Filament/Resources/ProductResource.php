@@ -3,9 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
+use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -51,6 +56,13 @@ class ProductResource extends Resource
                     ->required(),
 
                 Group::make([
+                    Select::make('categories')
+                        ->relationship('categories', 'title')
+                        ->options(Category::all()->pluck('title', 'id'))
+                        ->required()
+                        ->multiple()
+                        ->searchable(),
+
                     Group::make([
                         TextInput::make('price')
                             ->required()
@@ -119,6 +131,10 @@ class ProductResource extends Resource
                 TextColumn::make('discounted_price')
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('categories.title')
+                    ->sortable()
+                    ->wrap()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_popular')
                     ->boolean(),
                 IconColumn::make('is_in_stock')
