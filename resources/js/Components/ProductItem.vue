@@ -13,7 +13,7 @@
             return data.image;
         }
 
-        return import.meta.env.BASE_URL + "storage/" + data.image;
+        return "/storage/" + data.image;
     })
 </script>
 

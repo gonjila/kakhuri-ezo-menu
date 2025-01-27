@@ -7,7 +7,7 @@ import {router} from "@inertiajs/vue3";
 const { locale, availableLocales } = useI18n();
 
 const isOpen = ref(false);
-const selector = ref(null);
+const selector = ref<HTMLElement | null>(null);
 const LANGUAGE_NAME = "lang";
 
 const flags: Record<string, string> = {
@@ -42,7 +42,7 @@ const selectLocale = (selectedLocale: string): void => {
 };
 
 const handleClickOutside = (event: MouseEvent): void => {
-    if (selector.value && !selector.value.contains(event.target)) {
+    if (selector.value && !selector.value?.contains(event.target as Node)) {
         isOpen.value = false;
     }
 };
@@ -69,6 +69,7 @@ onBeforeUnmount(() => {
             class="boxBg flex items-center px-4 py-2"
             aria-haspopup="true"
             :aria-expanded="isOpen"
+            aria-label="language selector"
         >
             <span :class="`fi fi-${currentFlag}`"></span>
             <span class="hidden lg:block ml-2 capitalize">{{ currentLanguage }}</span>

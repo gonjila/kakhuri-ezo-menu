@@ -38,7 +38,7 @@
                 :style="{height: componentsHeight}"
             >
 
-            <button :style="{height: componentsHeight}" class="aspect-square bg-primary rounded-lg grid place-items-center">
+            <button :style="{height: componentsHeight}" class="aspect-square bg-primary rounded-lg grid place-items-center" aria-label="search">
                 <Search />
             </button>
         </form>

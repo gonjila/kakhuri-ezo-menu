@@ -11,7 +11,7 @@ import {Location, Mail, Phone, Facebook, Logo, Instagram, Tiktok} from "@/Compon
             <header
                 class="max-w-full grid grid-cols-2 lg:grid-cols-3 items-center gap-2 py-10"
             >
-                <Link href="/" class="flex lg:col-start-2 lg:justify-center items-center gap-3">
+                <Link href="/" aria-label="Redirect to main page" class="flex lg:col-start-2 lg:justify-center items-center gap-3">
                     <Logo/>
 
                     <div class="hidden sm:flex flex-col">
@@ -68,9 +68,9 @@ import {Location, Mail, Phone, Facebook, Logo, Instagram, Tiktok} from "@/Compon
                     </div>
 
                     <div class="flex flex-col md:flex-row flex-wrap gap-2">
-                        <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center"><Facebook/></a>
-                        <a href="https://www.instagram.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white boxShadow rounded-full flex items-center justify-center"><Instagram/></a>
-                        <a href="https://www.tiktok.com/@restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white boxShadow rounded-full flex items-center justify-center"><Tiktok/></a>
+                        <a href="https://www.facebook.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-blue-500 rounded-full boxShadow flex items-center justify-center" aria-label="open new tab with facebook"><Facebook/></a>
+                        <a href="https://www.instagram.com/restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white rounded-full boxShadow flex items-center justify-center" aria-label="open new tab with instagram"><Instagram/></a>
+                        <a href="https://www.tiktok.com/@restaurantkakhuriezo" target="_blank" class="w-9 h-9 bg-white rounded-full boxShadow flex items-center justify-center" aria-label="open new tab with tiktok"><Tiktok/></a>
                     </div>
                 </div>
 
