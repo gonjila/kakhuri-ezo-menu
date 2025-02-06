@@ -26,7 +26,7 @@
                 class="w-full h-full object-cover transition duration-500 hover:scale-110"
             >
 
-            <p class="text-center text-white font-bold uppercase w-full bg-black/50 p-3 absolute left-0 bottom-0 z-10">
+            <p class="text-center text-white font-bold uppercase w-full bg-black/50 py-3 px-4 absolute left-0 bottom-0 z-10">
                 {{data.title}}
             </p>
         </Link>

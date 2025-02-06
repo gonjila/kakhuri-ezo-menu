@@ -12,7 +12,7 @@ import {ICategory, IProduct} from "@/types";
 
 <template>
     <section class="flex flex-col gap-7">
-        <h2 class="blackText text-xl sm:text-2xl lg:text-3xl font-bold uppercase flex items-center gap-3">
+        <h2 class="blackText text-xl sm:text-2xl lg:text-3xl uppercase flex items-center gap-3">
             <slot name="icon"/> <span class="">{{title}}</span>
         </h2>
 

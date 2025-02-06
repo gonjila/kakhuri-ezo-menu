@@ -21,7 +21,7 @@
     })
 
     function submit() {
-        router.get(route('all-products', {search: form.search}));
+        router.get(route('all-products', {search: form.search?.toLowerCase()}));
     }
 </script>
 

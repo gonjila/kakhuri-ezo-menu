@@ -14,7 +14,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Noto Sans Georgian', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 primary: '#ff2d20',
