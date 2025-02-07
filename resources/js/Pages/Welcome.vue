@@ -18,22 +18,16 @@ defineProps<{
     <MainLayout>
         <SearchInput />
 
-        <GroupLayout :title="$t('titles.categories')" type="category" :data="categories.data">
+        <GroupLayout v-if="categories.data.length > 0" :title="$t('titles.categories')" type="category" :data="categories.data">
             <template #icon>
                 <Mail width="44" height="44" />
             </template>
         </GroupLayout>
 
-        <GroupLayout :title="$t('titles.popular')" :icon="Mail" type="product" :data="popular.data">
+        <GroupLayout v-if="popular.data.length > 0" :title="$t('titles.popular')" :icon="Mail" type="product" :data="popular.data">
             <template #icon>
                 <Mail width="44" height="44" />
             </template>
         </GroupLayout>
-
-<!--        <GroupLayout :title="$t('titles.combo')" :icon="Mail" type="product" :data="productData">-->
-<!--            <template #icon>-->
-<!--                <Mail width="44" height="44" />-->
-<!--            </template>-->
-<!--        </GroupLayout>-->
     </MainLayout>
 </template>
