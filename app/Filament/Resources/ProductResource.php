@@ -4,12 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Category;
-use App\Models\Color;
 use App\Models\Product;
-use App\Models\Size;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -52,8 +49,7 @@ class ProductResource extends Resource
                     ->maxSize(20 * 1024)
                     ->acceptedFileTypes(['image/png', 'image/jpeg'])
                     ->helperText('Each image should be less than 20MB and in .jpg, .png formats.')
-                    ->reorderable()
-                    ->required(),
+                    ->reorderable(),
 
                 Group::make([
                     Select::make('categories')
@@ -97,10 +93,8 @@ class ProductResource extends Resource
                         ->columns(3),
 
                     Group::make([
-                        Toggle::make('is_popular')
-                            ->required(),
-                        Toggle::make('is_in_stock')
-                            ->required(),
+                        Toggle::make('is_popular'),
+                        Toggle::make('is_in_stock'),
                     ])->columns(3),
                 ])
             ]);

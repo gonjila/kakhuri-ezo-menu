@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Product;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
@@ -39,7 +35,6 @@ class CategoryResource extends Resource
                     ->relationship('products', 'name')
                     ->options(Product::all()->pluck('name', 'id'))
                     ->multiple()
-                    ->required()
                     ->searchable(),
                 FileUpload::make('image')
                     ->disk('public')
@@ -52,8 +47,7 @@ class CategoryResource extends Resource
                     ->maxSize(20 * 1024)
                     ->acceptedFileTypes(['image/png', 'image/jpeg'])
                     ->helperText('Each image should be less than 20MB and in .jpg, .png formats.')
-                    ->reorderable()
-                    ->required(),
+                    ->reorderable(),
             ]);
     }
 
