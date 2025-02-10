@@ -1,9 +1,7 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3'
-    import {computed} from "vue";
     import {ICategory} from "@/types";
     import LazyImage from "@/Components/LazyImage.vue";
-
 
     const {data} = defineProps<{
         data: ICategory

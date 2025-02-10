@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue';
 import { useIntersectionObserver } from '@vueuse/core';
 import noImageAvailable from '@/assets/No_Image_Available.png'
-import noasd from '@/assets/no-image-available-icon.png'
 
 // Props
 const props = defineProps({
@@ -56,7 +55,7 @@ const onImageError = () => {
             :alt="alt"
             @load="onImageLoad"
             @error="onImageError"
-            class="w-full h-full object-cover transition duration-500 hover:scale-110"
+            class="object-cover hover:scale-110"
             :class="[imgClass, { 'image-loaded': isLoaded }]"
         />
     </div>
@@ -85,7 +84,7 @@ img {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: all 300ms ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .image-loaded {

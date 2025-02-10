@@ -1,20 +1,12 @@
 <script setup lang="ts">
     import {Link} from '@inertiajs/vue3';
-    import {computed} from "vue";
     import {IProduct} from "@/types";
     import DiscountBadge from "@/Components/DiscountBadge.vue";
+    import LazyImage from "@/Components/LazyImage.vue";
 
     const {data} = defineProps<{
         data: IProduct
     }>()
-
-    const imageUrl = computed(() => {
-        if(data.image.startsWith("http")){
-            return data.image;
-        }
-
-        return "/storage/" + data.image;
-    })
 </script>
 
 <template>
@@ -23,11 +15,7 @@
             <div
                 class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
             >
-                <img
-                    :src="imageUrl"
-                    :alt="data.name"
-                    class="w-full h-full object-contain duration-500 hover:scale-110"
-                >
+                <LazyImage :alt="data.name" :src="data.image" img-class="!object-contain" />
             </div>
 
             <div class="pt-4 px-6 pb-8 flex flex-col gap-4 relative">
