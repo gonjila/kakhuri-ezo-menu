@@ -10,8 +10,7 @@ defineProps<{
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet"
          :width="width ?? '24px'" :height="height ?? '24px'" :fill="fill ?? 'gray'"
     >
-        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-           fill="#000000" stroke="none">
+        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
             <path d="M2448 5105 c-149 -32 -285 -139 -352 -276 -19 -41 -104 -285 -187
 -544 -82 -258 -158 -483 -167 -500 -38 -66 -31 -65 -607 -65 -408 0 -534 -3
 -586 -14 -282 -60 -466 -347 -405 -631 18 -88 70 -186 130 -247 29 -29 233
