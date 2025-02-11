@@ -13,7 +13,7 @@
     <li class="relative boxBg boxShadow !overflow-visible cursor-pointer">
         <Link :href="route('product', {productId: data.id})" class="h-full flex flex-col">
             <div
-                class="aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
+                class="min-h-[100px] aspect-[4/3] rounded-t-lg overflow-hidden flex items-start justify-center flex-1"
             >
                 <LazyImage :alt="data.name" :src="data.image" img-class="!object-contain" />
             </div>

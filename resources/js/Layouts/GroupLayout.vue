@@ -13,7 +13,7 @@ import {ICategory, IProduct} from "@/types";
 <template>
     <section class="flex flex-col gap-7">
         <h2 class="blackText text-xl sm:text-2xl lg:text-3xl uppercase flex items-center gap-3">
-            <slot name="icon"/> <span class="">{{title}}</span>
+            <slot name="icon"/> <span>{{title}}</span>
         </h2>
 
         <ul v-if="type==='category'" class="w-full flex flex-wrap items-center justify-center gap-10">
