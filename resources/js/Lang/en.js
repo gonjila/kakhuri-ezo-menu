@@ -15,5 +15,6 @@ export default {
     products: {
         allProducts: "all products",
         search: "search products",
-    }
+    },
+    noData: "no data",
 }

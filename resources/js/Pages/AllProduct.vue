@@ -4,6 +4,7 @@
     import {MainLayout} from "@/Layouts";
     import SearchInput from "@/Components/SearchInput.vue";
     import ProductItem from "@/Components/ProductItem.vue";
+    import {useI18n} from "vue-i18n";
 
     defineProps<{
         categories: {data: ICategory[]}
@@ -25,5 +26,7 @@
                 </ul>
             </div>
         </div>
+
+        <div v-if="categories?.data?.length === 0" class="blackText text-2xl uppercase flex justify-center">{{$t('noData')}}</div>
     </MainLayout>
 </template>

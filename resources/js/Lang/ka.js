@@ -15,5 +15,6 @@ export default {
     products: {
         allProducts: "ყველა პროდუქტი",
         search: 'მოძებნე პროდქტები',
-    }
+    },
+    noData: "მონაცემები არ არის",
 }
