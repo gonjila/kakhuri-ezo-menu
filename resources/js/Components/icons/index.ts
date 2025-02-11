@@ -1,4 +1,6 @@
+export {default as Categories} from './Categories.vue'
 export {default as Facebook} from './Facebook.vue'
+export {default as FavoritesStar} from './FavoritesStar.vue'
 export {default as Instagram} from './Instagram.vue'
 export {default as Location} from './Location.vue'
 export {default as Logo} from './Logo.vue'

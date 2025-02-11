@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -12,21 +13,26 @@ class ProductService
 {
    public function getAllProducts(): \Inertia\Response
    {
-        $products = Product::query();
+       $searchQuery = request()->query('search');
+       $categoryIdQuery = request()->query('category_id');
 
-        if($searchQuery = request()->query('search')) {
-            $products =  $products->where(DB::raw('LOWER(name)'), 'like', '%' . strtolower($searchQuery) . '%');
-        }
+       $categories = Category::query();
 
-        if ($categoryIdQuery = request()->query('category_id')) {
-            $products = $products->whereHas('categories', function ($query) use ($categoryIdQuery) {
-                $query->where('categories.id', $categoryIdQuery);
-            });
-        }
+       // Filter categories that have products matching the search query
+       $categories->whereHas('products', function ($query) use ($searchQuery) {
+           if ($searchQuery) {
+               $query->where(DB::raw('LOWER(name)'), 'like', '%' . strtolower($searchQuery) . '%');
+           }
+       });
 
-        $products = $products->get();
+       // If category_id is provided, filter further
+       if ($categoryIdQuery) {
+           $categories->where('id', $categoryIdQuery);
+       }
 
-        return Inertia::render('AllProduct', ["products" => ProductResource::collection($products)]);
+       return Inertia::render('AllProduct', [
+           "categories" => CategoryResource::collection($categories->with('products')->get())
+       ]);
     }
 
     public function getProductById(int $id): \Inertia\Response
