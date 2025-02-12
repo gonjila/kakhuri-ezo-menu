@@ -1,23 +1,48 @@
 <script setup lang="ts">
-    import {Head} from "@inertiajs/vue3";
+    import {computed} from "vue";
+    import {Head, Link} from "@inertiajs/vue3";
+
     import {MainLayout} from "@/Layouts";
-    import {ICategory, IProduct} from "@/types";
-    import {Link} from '@inertiajs/vue3'
+
     import DiscountBadge from "@/Components/DiscountBadge.vue";
     import ProductItem from "@/Components/ProductItem.vue";
     import LazyImage from "@/Components/LazyImage.vue";
 
-    defineProps<{
+    import {ICategory, IProduct} from "@/types";
+    import SocialShare from "@/Components/SocialShare.vue";
+
+    const props = defineProps<{
         product: { data: IProduct }
         categories: { data: ICategory[] }
         similarProducts: { data: IProduct[] }
     }>();
+
+    const computedImageUrl = computed(() => {
+        if (props.product.data.image.startsWith("http")) return props.product.data.image;
+        return location.origin + "/storage/" + props.product.data.image;
+    });
 </script>
 
 <template>
     <Head>
         <title>SingleProduct</title>
-        <meta name="description" content="Your page description">
+        <meta name="description" :content="product.data.description">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" :content="product.data.name">
+        <meta property="og:description" :content="product.data.description">
+        <meta property="og:url" :content="route('product', { productId: product.data.id })">
+        <meta property="og:type" content="product">
+        <meta property="og:image" :content="computedImageUrl">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="product.data.name">
+        <meta name="twitter:description" :content="product.data.description">
+        <meta name="twitter:image" :content="computedImageUrl">
+        <meta name="twitter:url" :content="route('product', { productId: product.data.id })">
     </Head>
 
     <MainLayout>
@@ -59,6 +84,12 @@
 
                         <span class="blackText">GEL</span>
                     </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h3 class="capitalize text-lg blackText">{{ $t('titles.share') }}</h3>
+
+                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>
                 </div>
             </div>
         </div>
