@@ -32,6 +32,5 @@
     .social-icon {
         padding: 8px 12px;
         font-weight: bold;
-        transition: background 0.2s;
     }
 </style>

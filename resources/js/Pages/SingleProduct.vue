@@ -18,6 +18,7 @@
     }>();
 
     const computedImageUrl = computed(() => {
+        if (!props.product.data.image) return '';
         if (props.product.data.image.startsWith("http")) return props.product.data.image;
         return location.origin + "/storage/" + props.product.data.image;
     });
@@ -25,25 +26,28 @@
 
 <template>
     <Head>
-        <title>SingleProduct</title>
+        <title>{{ product.data.name }}</title>
         <meta name="description" :content="product.data.description">
 
         <!-- Open Graph Meta Tags -->
-        <meta property="og:title" :content="product.data.name">
-        <meta property="og:description" :content="product.data.description">
-        <meta property="og:url" :content="route('product', { productId: product.data.id })">
         <meta property="og:type" content="product">
-        <meta property="og:image" :content="computedImageUrl">
+        <meta property="og:title" :content="product.data.name">
+        <meta property="og:description" v-bind:content="product.data.description || 'Default product description here.'">
+        <meta property="og:url" :content="route('product', { productId: product.data.id })">
+        <meta property="og:image" v-bind:content="computedImageUrl">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
+        <meta property="og:site_name" content="Your Site Name">
+        <meta property="og:see_also" :content="route('home')">
 
         <!-- Twitter Card Meta Tags -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" :content="product.data.name">
         <meta name="twitter:description" :content="product.data.description">
-        <meta name="twitter:image" :content="computedImageUrl">
+        <meta name="twitter:image" v-bind:content="computedImageUrl">
         <meta name="twitter:url" :content="route('product', { productId: product.data.id })">
     </Head>
+
 
     <MainLayout>
         <div class="flex flex-col lg:flex-row gap-10">
@@ -89,7 +93,29 @@
                 <div class="flex flex-col gap-4">
                     <h3 class="capitalize text-lg blackText">{{ $t('titles.share') }}</h3>
 
-                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>
+<!--                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>-->
+                    <div class="flex gap-5 flex-wrap">
+                        <ShareNetwork
+                            network="facebook"
+                            :url="route('product', {productId: product.data.id})"
+                            :title="product.data.name"
+                            :description="product.data.description"
+                            :hashtags="product.data.name"
+                            class="boxBg boxShadow px-3 py-2"
+                        >
+                            Facebook
+                        </ShareNetwork>
+                        <ShareNetwork
+                            network="LinkedIn"
+                            url="https://news.vuejs.org/issues/180"
+                            :title="product.data.name"
+                            :description="product.data.description"
+                            :hashtags="product.data.name"
+                            class="boxBg boxShadow px-3 py-2"
+                        >
+                            twitter
+                        </ShareNetwork>
+                    </div>
                 </div>
             </div>
         </div>
