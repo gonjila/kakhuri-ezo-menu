@@ -1,30 +1,58 @@
 <script setup lang="ts">
-    import {Head} from "@inertiajs/vue3";
+    import {computed} from "vue";
+    import {Head, Link} from "@inertiajs/vue3";
+
     import {MainLayout} from "@/Layouts";
-    import {ICategory, IProduct} from "@/types";
-    import {Link} from '@inertiajs/vue3'
+
     import DiscountBadge from "@/Components/DiscountBadge.vue";
     import ProductItem from "@/Components/ProductItem.vue";
+    import LazyImage from "@/Components/LazyImage.vue";
 
-    defineProps<{
+    import {ICategory, IProduct} from "@/types";
+    import SocialShare from "@/Components/SocialShare.vue";
+
+    const props = defineProps<{
         product: { data: IProduct }
         categories: { data: ICategory[] }
         similarProducts: { data: IProduct[] }
     }>();
+
+    const computedImageUrl = computed(() => {
+        if (!props.product.data.image) return '';
+        if (props.product.data.image.startsWith("http")) return props.product.data.image;
+        return location.origin + "/storage/" + props.product.data.image;
+    });
 </script>
 
 <template>
-    <Head title="SingleProduct" />
+    <Head>
+        <title>{{ product.data.name }}</title>
+        <meta name="description" :content="product.data.description">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:type" content="product">
+        <meta property="og:title" :content="product.data.name">
+        <meta property="og:description" v-bind:content="product.data.description || 'Default product description here.'">
+        <meta property="og:url" :content="route('product', { productId: product.data.id })">
+        <meta property="og:image" v-bind:content="computedImageUrl">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:site_name" content="Your Site Name">
+        <meta property="og:see_also" :content="route('home')">
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="product.data.name">
+        <meta name="twitter:description" :content="product.data.description">
+        <meta name="twitter:image" v-bind:content="computedImageUrl">
+        <meta name="twitter:url" :content="route('product', { productId: product.data.id })">
+    </Head>
+
 
     <MainLayout>
         <div class="flex flex-col lg:flex-row gap-10">
             <div class="relative flex-[3]">
-<!--                    :src="product.data.image"-->
-                <img
-                    src="https://bonee.blob.core.windows.net/images/a30bc6cf-905b-a34b-b70a-6aaee0b97dc6_3.webp"
-                    :alt="product.data.name"
-                    class="rounded-lg"
-                >
+                <LazyImage :alt="product.data.name" :src="product.data.image" img-class="rounded-lg hover:scale-100" />
 
                 <DiscountBadge :discount="product.data.discount" />
             </div>
@@ -60,6 +88,12 @@
 
                         <span class="blackText">GEL</span>
                     </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h3 class="capitalize text-lg blackText">{{ $t('titles.share') }}</h3>
+
+                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>
                 </div>
             </div>
         </div>

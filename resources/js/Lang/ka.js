@@ -9,6 +9,7 @@ export default {
         combo: 'კომბო მენიუ',
         price: 'ფასი',
         similarProducts: 'მსგავსი პროდუქტები',
+        share: 'გაზიარება'
     },
     welcome: {part1:"მოგესალმებით", part2:"კახური ეზო"},
     createdby: {part1: 'შექმნილია', part2: 'ს მიერ'},

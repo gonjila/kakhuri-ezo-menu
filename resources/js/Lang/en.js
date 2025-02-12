@@ -9,6 +9,7 @@ export default {
         combo: 'combo',
         price: 'price',
         similarProducts: 'similar products',
+        share: 'share',
     },
     welcome:{part1:"welcome to", part2:"Kakhuri ezo"},
     createdby: {part1: "made by", part2: ""},
