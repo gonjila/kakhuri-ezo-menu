@@ -93,29 +93,7 @@
                 <div class="flex flex-col gap-4">
                     <h3 class="capitalize text-lg blackText">{{ $t('titles.share') }}</h3>
 
-<!--                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>-->
-                    <div class="flex gap-5 flex-wrap">
-                        <ShareNetwork
-                            network="facebook"
-                            :url="route('product', {productId: product.data.id})"
-                            :title="product.data.name"
-                            :description="product.data.description"
-                            :hashtags="product.data.name"
-                            class="boxBg boxShadow px-3 py-2"
-                        >
-                            Facebook
-                        </ShareNetwork>
-                        <ShareNetwork
-                            network="LinkedIn"
-                            url="https://news.vuejs.org/issues/180"
-                            :title="product.data.name"
-                            :description="product.data.description"
-                            :hashtags="product.data.name"
-                            class="boxBg boxShadow px-3 py-2"
-                        >
-                            twitter
-                        </ShareNetwork>
-                    </div>
+                    <social-share :title="product.data.name" :url="route('product', { productId: product.data.id })" :image="computedImageUrl"/>
                 </div>
             </div>
         </div>

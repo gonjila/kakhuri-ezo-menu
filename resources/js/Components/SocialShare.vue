@@ -31,6 +31,5 @@
 <style scoped>
     .social-icon {
         padding: 8px 12px;
-        font-weight: bold;
     }
 </style>
