@@ -5,6 +5,7 @@
     import {Link} from '@inertiajs/vue3'
     import DiscountBadge from "@/Components/DiscountBadge.vue";
     import ProductItem from "@/Components/ProductItem.vue";
+    import LazyImage from "@/Components/LazyImage.vue";
 
     defineProps<{
         product: { data: IProduct }
@@ -14,17 +15,15 @@
 </script>
 
 <template>
-    <Head title="SingleProduct" />
+    <Head>
+        <title>SingleProduct</title>
+        <meta name="description" content="Your page description">
+    </Head>
 
     <MainLayout>
         <div class="flex flex-col lg:flex-row gap-10">
             <div class="relative flex-[3]">
-<!--                    :src="product.data.image"-->
-                <img
-                    src="https://bonee.blob.core.windows.net/images/a30bc6cf-905b-a34b-b70a-6aaee0b97dc6_3.webp"
-                    :alt="product.data.name"
-                    class="rounded-lg"
-                >
+                <LazyImage :alt="product.data.name" :src="product.data.image" img-class="rounded-lg hover:scale-100" />
 
                 <DiscountBadge :discount="product.data.discount" />
             </div>

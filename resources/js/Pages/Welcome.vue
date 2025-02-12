@@ -13,7 +13,10 @@ defineProps<{
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <Head>
+        <title>Welcome</title>
+        <meta name="description" content="Your page description">
+    </Head>
 
     <MainLayout>
         <SearchInput />
