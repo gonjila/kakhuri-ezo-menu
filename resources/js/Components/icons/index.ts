@@ -1,4 +1,5 @@
 export {default as Categories} from './Categories.vue'
+export {default as Discount} from './Discount.vue'
 export {default as Facebook} from './Facebook.vue'
 export {default as FavoritesStar} from './FavoritesStar.vue'
 export {default as Instagram} from './Instagram.vue'

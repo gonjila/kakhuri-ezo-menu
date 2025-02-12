@@ -15,6 +15,7 @@ class DashboardController extends Controller
             return Inertia::render('Welcome', [
                 'categories' => CategoryResource::collection(Category::all()),
                 'popular' => ProductResource::collection(Product::where('is_popular', true)->take(12)->get()),
+                'discounted' => ProductResource::collection(Product::where('discount', ">", 0)->latest('updated_at')->take(12)->get()),
             ]);
         } catch (\Exception $e) {
             return response()->json([

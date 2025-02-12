@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import {Head} from '@inertiajs/vue3';
-import {MainLayout, GroupLayout} from "@/Layouts";
-import {Categories, FavoritesStar, Mail} from "@/Components/icons";
+    import {Head} from '@inertiajs/vue3';
+    import {MainLayout, GroupLayout} from "@/Layouts";
+    import {Categories, Discount, FavoritesStar, Mail} from "@/Components/icons";
 
-import {ICategory, IProduct} from "@/types";
-import SearchInput from "@/Components/SearchInput.vue";
+    import {ICategory, IProduct} from "@/types";
+    import SearchInput from "@/Components/SearchInput.vue";
 
-defineProps<{
-    categories: {data: ICategory[]};
-    popular: {data: IProduct[]};
-}>()
+    defineProps<{
+        categories: {data: ICategory[]};
+        popular: {data: IProduct[]};
+        discounted: {data: IProduct[]};
+    }>()
 </script>
 
 <template>
@@ -30,6 +31,12 @@ defineProps<{
         <GroupLayout v-if="popular.data.length > 0" :title="$t('titles.popular')" :icon="Mail" type="product" :data="popular.data">
             <template #icon>
                 <FavoritesStar width="44" height="44" />
+            </template>
+        </GroupLayout>
+
+        <GroupLayout v-if="popular.data.length > 0" :title="$t('titles.discounted')" :icon="Mail" type="product" :data="discounted.data">
+            <template #icon>
+                <Discount width="44" height="44" />
             </template>
         </GroupLayout>
     </MainLayout>

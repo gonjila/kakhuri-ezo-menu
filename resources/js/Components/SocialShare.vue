@@ -20,16 +20,14 @@
 </script>
 
 <template>
-    <div class="flex gap-3">
-        <a :href="shareLinks.facebook" target="_blank" class="social-icon boxBg boxShadow">Facebook</a>
-        <a :href="shareLinks.twitter" target="_blank" class="social-icon boxBg boxShadow">Twitter</a>
-        <a :href="shareLinks.linkedin" target="_blank" class="social-icon boxBg boxShadow">LinkedIn</a>
-        <a :href="shareLinks.pinterest" target="_blank" class="social-icon boxBg boxShadow">Pinterest</a>
+    <div class="flex gap-3 flex-wrap">
+        <a :href="shareLinks.facebook" target="_blank" class="boxBg boxShadow px-3 py-2">Facebook</a>
+        <a :href="shareLinks.twitter" target="_blank" class="boxBg boxShadow  px-3 py-2">Twitter</a>
+        <a :href="shareLinks.linkedin" target="_blank" class="boxBg boxShadow  px-3 py-2">LinkedIn</a>
+        <a :href="shareLinks.pinterest" target="_blank" class="boxBg boxShadow  px-3 py-2">Pinterest</a>
     </div>
 </template>
 
 <style scoped>
-    .social-icon {
-        padding: 8px 12px;
-    }
+
 </style>

@@ -10,6 +10,7 @@ export default {
         price: 'price',
         similarProducts: 'similar products',
         share: 'share',
+        discounted: "ფასდაკლებული"
     },
     welcome:{part1:"welcome to", part2:"Kakhuri ezo"},
     createdby: {part1: "made by", part2: ""},
